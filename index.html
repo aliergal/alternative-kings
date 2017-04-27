@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Turkish Kings</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ 	<script src="script.js"></script>
+</head>
+<body>
+<p>Remaining Cards: <span id="remainingCards">52</span></p>
+<table width="600" border="0">
+	<tr>
+		<td><img src="images/cards/empty.png" id="spades" width="75px" height="auto" / ></td>
+		<td><img src="images/cards/empty.png" id="hearts" width="75px" height="auto" / ></td>
+		<td><img src="images/cards/empty.png" id="clubs" width="75px" height="auto" / ></td>
+		<td><img src="images/cards/empty.png" id="diamonds" width="75px" height="auto" / ></td>
+	</tr>
+	<tr>
+		<td><img src="images/cards/empty.png" id="spades2" width="75px" height="auto" / ></td>
+		<td><img src="images/cards/empty.png" id="hearts2" width="75px" height="auto" / ></td>
+		<td><img src="images/cards/empty.png" id="clubs2" width="75px" height="auto" / ></td>
+		<td><img src="images/cards/empty.png" id="diamonds2" width="75px" height="auto" / ></td>
+	</tr>
+</table>
+<hr>
+<img src="images/cards/card_back.png" width="150px" height="auto" onclick="turn_cards(cards)" / >
+<img src="images/cards/empty.png" id="openedCard" width="150px" height="auto" / >
+
+<hr>
+
+<button onclick="pick_card(1)">Pick Small Card</button>
+
+<button onclick="pick_card(2)">Pick Big Card</button>
+
+<button onclick="reset_game()">Reset Game</button>
+
+</body>
+</html>
