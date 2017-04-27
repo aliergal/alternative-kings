@@ -7,6 +7,7 @@ var cards = create_cards();
 var cards = shuffle_cards(cards);
 var newCards = [];
 
+console.log(cards);
 
 /*
 	Function to create a new deck of cards
@@ -68,10 +69,10 @@ function turn_cards(array){
 		console.log(newCards);
 		var lastCard = newCards.slice(newCards.length - 1, newCards.length);
 		lastCard = lastCard[0];
-		var selector = '#openedCard';
-		replace_card_image(lastCard,selector);
+		replace_card_image(lastCard,'#openedCard');
 	}else{
 		if(card_picked){
+			replace_card_image('empty','#openedCard');
 			reset_round();
 		}else{
 			end_game();
@@ -86,15 +87,22 @@ function turn_cards(array){
 	Pick the top card from opened deck
 */
 function pick_card(d = 1){
+
+	card_picked = true;
+
+	//Increase the number of picked cards
 	numOfPickedCards++;
 
+	//Get the last card from the opened deck
 	var pickedCard = newCards.slice(newCards.length - 1, newCards.length);
 	pickedCard = pickedCard[0];
+
+	//Remove the picked card from opened deck
 	newCards = newCards.slice(0, newCards.length - 1);
 
+
+	// 1: Asc, 2: Desc
 	var type = '';
-
-
 	if (pickedCard.search("spades") >= 0) type = 's';
 	if (pickedCard.search("hearts") >= 0) type = 'h';
 	if (pickedCard.search("clubs") >= 0) type = 'c';
@@ -107,6 +115,7 @@ function pick_card(d = 1){
 		if (pickedCard.search("diamonds") >= 0) type = 'd2';
 	}
 
+	//Replace result images
 	if(type == 's') replace_card_image(pickedCard,'#spades');
 	if(type == 's2') replace_card_image(pickedCard,'#spades2');
 	if(type == 'h') replace_card_image(pickedCard,'#hearts');
@@ -116,16 +125,16 @@ function pick_card(d = 1){
 	if(type == 'd') replace_card_image(pickedCard,'#diamonds');
 	if(type == 'd2') replace_card_image(pickedCard,'#diamonds2');
 
+	//Show new last card on the opened deck
 	var lastCard = newCards.slice(newCards.length - 1, newCards.length);
 	lastCard = lastCard[0];
-	var selector = '#openedCard';
 	if(newCards.length == 0){
-		replace_card_image('empty',selector);
+		replace_card_image('empty','#openedCard');
 	}else{
-		replace_card_image(lastCard,selector);
+		replace_card_image(lastCard,'#openedCard');
 	}
-	card_picked = true;
 
+	//Set remaining card indicator
 	$('#remainingCards').html(52 - numOfPickedCards);
 }
 
